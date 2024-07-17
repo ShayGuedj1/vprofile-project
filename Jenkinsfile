@@ -74,7 +74,7 @@ pipeline {
             }
         }
 
-        stage("UploadArtifact") {
+        stage('UploadArtifact') {
             steps {
                 nexusArtifactUploader (
                     nexusVersion: 'nexus3',
@@ -85,10 +85,12 @@ pipeline {
                     repository: "${RELEASE_REPO}",
                     credentialsId: "${NEXUS_LOGIN}",
                     artifacts: [
-                      [artifactId: 'vproapp',
-                       classifier: '',
-                       file: 'target/vprofile-v2.war',
-                       type: 'war']
+                        [
+                            artifactId: 'vproapp',
+                            classifier: '',
+                            file: 'target/vprofile-v2.war',
+                            type: 'war'
+                        ]
                     ]
                 )
             }
