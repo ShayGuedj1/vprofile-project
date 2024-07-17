@@ -76,7 +76,7 @@ pipeline {
 
         stage('UploadArtifact') {
             steps {
-                nexusArtifactUploader(
+                nexusArtifactUploader {
                     nexusVersion: 'nexus3',
                     protocol: 'http',
                     nexusUrl: "${NEXUSIP}:${NEXUSPORT}",
@@ -90,7 +90,7 @@ pipeline {
                         file: 'target/vprofile-v2.war',
                         type: 'war']
                     ]
-                )
+                }
             }
         }
 
